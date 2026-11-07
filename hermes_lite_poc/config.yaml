@@ -1,0 +1,45 @@
+name: Hermes Headless (Experimental)
+version: "0.1.1"
+slug: hermes_lite_poc
+description: "Isolated headless Hermes fixture; live cutover requires separate operator approval"
+arch: [amd64]
+startup: services
+boot: auto
+init: true
+ingress: true
+ingress_port: 8787
+panel_title: Hermes Headless
+panel_icon: mdi:brain
+panel_admin: true
+watchdog: "http://[HOST]:[PORT:8787]/live"
+homeassistant_api: false
+hassio_api: false
+host_network: false
+map:
+  - type: app_config
+    read_only: true
+    path: /config
+backup: cold
+backup_exclude:
+  - "control/activation.json"
+  - "control/operator-approvals/*"
+  - "hermes/tmp/*"
+  - "hermes-fixture/tmp/*"
+options:
+  mode: fixture
+  timezone: Europe/Amsterdam
+  provider: openai-codex
+  model: gpt-6.1-sol
+  worker_memory_mb: 1536
+  homeassistant_enabled: false
+  homeassistant_url: "http://homeassistant:80"
+  enable_browser: false
+schema:
+  mode: list(fixture|agent|live)
+  timezone: str
+  provider: str
+  model: str
+  worker_memory_mb: int(512,2048)
+  homeassistant_enabled: bool
+  homeassistant_url: str
+  enable_browser: bool

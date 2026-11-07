@@ -1,0 +1,5 @@
+build_from:
+  amd64: python:3.14.9-slim-bookworm@sha256:7dff173021016c8829ae58d5ce112ffc388073ebe67f351aeb6ba2909e35f847
+labels:
+  org.opencontainers.image.title: Hermes Lite PoC
+  org.opencontainers.image.version: "0.1.1"

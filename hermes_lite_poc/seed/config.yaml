@@ -1,0 +1,99 @@
+# New lightweight configuration, not a copy of the Windows config.
+model:
+  default: gpt-6.1-sol
+  provider: openai-codex
+auth:
+  adopt_external_logins: false
+  codex_login_flow: device_code
+agent:
+  max_turns: 80
+max_concurrent_sessions: 2
+terminal:
+  backend: local
+  cwd: .
+  timeout: 60
+  lifetime_seconds: 180
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+delegation:
+  provider: openai-codex
+  model: gpt-6.1-sol
+  max_concurrent_children: 1
+  max_spawn_depth: 1
+  max_iterations: 30
+  reasoning_effort: medium
+fallback_providers: []
+gateway:
+  allow_all_users: false
+  multiplex_profiles: false
+  auto_multiplex_migration: false
+  platform_connect_timeout: 30
+  loop_watchdog: true
+  delivery_ledger: true
+stt:
+  enabled: false
+platform_toolsets:
+  whatsapp: [terminal, file, web, skills, memory, session_search, delegation, cronjob, clarify, code_execution, todo, vision]
+  cli: [terminal, file, web, skills, memory, session_search, delegation, cronjob, clarify, code_execution, todo, vision]
+auxiliary:
+  compression:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  vision:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  skills_hub:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  approval:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  review:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  mcp:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  title_generation:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  memory_query_rewrite:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  tts_audio_tags:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  voice_chat:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  triage_specifier:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  kanban_decomposer:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  profile_describer:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  goal_judge:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  curator:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  monitor:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  background_review:
+    provider: openai-codex
+    model: gpt-6.1-sol
+    enabled: false
+  moa_reference:
+    provider: openai-codex
+    model: gpt-6.1-sol
+  moa_aggregator:
+    provider: openai-codex
+    model: gpt-6.1-sol

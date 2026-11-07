@@ -1,0 +1,26 @@
+ZELF OP GITHUB ZETTEN
+
+1. Maak op github.com een nieuwe, lege repository, bijvoorbeeld hermes-haos.
+   Kies Public als je hem wilt delen. Laat automatisch README, .gitignore en
+   licentie toevoegen UIT: deze bestanden zitten al in dit pakket.
+2. Kies uploading an existing file (of Add file -> Upload files).
+3. Sleep ALLE INHOUD van deze publicatiemap in het uploadvak, niet de
+   bovenliggende map zelf. Behoud de submappen hermes_lite_poc en LICENSES.
+   Let op: .gitignore en hermes_lite_poc/.dockerignore moeten ook mee.
+   Laat de browser uploaden en kies Commit changes.
+4. Controleer op GitHub dat repository.yaml direct op het hoogste niveau staat,
+   en dat hermes_lite_poc/config.yaml en het vendor-bronarchief aanwezig zijn.
+5. Voeg de URL van jouw repository toe aan de Home Assistant-appwinkel.
+
+Publiceer uitsluitend de inhoud van DEZE schone map. Niet de bestaande PoC,
+Hermes-installatie, auditmappen, back-ups of herstelsleutels uploaden.
+De ZIP naast deze map is alleen voor transport: upload NIET uitsluitend de ZIP
+als je wilt dat Home Assistant de repository herkent.
+
+Als de browser de verborgen bestanden overslaat, gebruik GitHub Desktop om
+alle bestanden vanuit deze map in de nieuwe repository te committen.
+Er is lokaal geen oude Git-historie meegekopieerd.
+
+Dit is een experimentele publicatiesnapshot. Geen nieuwe build/installatietest
+uitgevoerd. Een bestaande lokale app op je Dell niet vervangen, verwijderen
+of naast een tweede WhatsApp-gateway activeren. Lees README en DOCS.
