@@ -9,11 +9,12 @@
   "node_version": "26.12.1",
   "node_sha256": "6170b2d474e1c626f43cff3adc118df9fe3b573258a4fc3d850c8dbc6b079bbd",
     "debian_snapshot": "20261022T000000Z",
-  "requirements_sha256": "b75db9599728aeabe0cae661cafa4e84a123faf394df6ffcccf51a5a30605441",
+  "requirements_sha256": "e098176a173ff73e004a893165b079d7548b94499800e6aa3c1f121b0a23606d",
   "dependency_overrides": {
     "Pillow": "13.0.0 (upstream tool.uv override; browser-harness metadata pins12.3.0)",
     "cryptography": "50.0.2",
-    "pynacl": ">=1.6,<1.7"
+    "pynacl": ">=1.6,<1.7",
+    "anthropic": "0.125.0 + docstring-parser 0.18.0 (hermes-agent[anthropic] extra; baked in because HERMES_DISABLE_LAZY_INSTALLS=1)"
   },
   "npm_lock_sha256": "2cb2b4bb194763d1a5af04e635c45346434b62cbd859f8c8eba561ff1eb1056d",
   "base_image_verified_via": "Docker Hub tag metadata, amd64 manifest digest",

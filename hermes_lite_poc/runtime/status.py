@@ -7,9 +7,12 @@ import threading
 
 class StatusServer:
     def __init__(self, supervisor, host='0.0.0.0', port=8787,
-                 allowed=('127.0.0.1', '::1', '172.30.32.2')):
+                 allowed=('127.0.0.1', '::1', '172.30.32.2'), status_only=('172.30.32.1',)):
         self.supervisor = supervisor
         self.allowed = frozenset(str(ipaddress.ip_address(value)) for value in allowed)
+        # HA Core runs with host networking; on the hassio bridge it appears as 172.30.32.1.
+        # That peer may only GET exactly /status (read-only, non-secret JSON).
+        self.status_only = frozenset(str(ipaddress.ip_address(value)) for value in status_only)
         owner = self
         class Server(ThreadingHTTPServer):
             daemon_threads = True
@@ -48,7 +51,8 @@ class StatusServer:
                 pass
 
             def do_GET(self):
-                if self.client_address[0] not in owner.allowed:
+                peer = self.client_address[0]
+                if peer not in owner.allowed and not (peer in owner.status_only and self.path == '/status'):
                     self.send_body(403, b'{"error":"forbidden"}')
                     return
                 status = owner.supervisor.status()

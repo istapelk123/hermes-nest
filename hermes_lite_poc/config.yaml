@@ -1,5 +1,5 @@
 name: Hermes Headless (Experimental)
-version: "0.1.1"
+version: "0.1.2"
 slug: hermes_lite_poc
 description: "Isolated headless Hermes fixture; live cutover requires separate operator approval"
 arch: [amd64]

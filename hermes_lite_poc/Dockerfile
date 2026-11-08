@@ -25,7 +25,7 @@ RUN cd /opt/hermes/scripts/whatsapp-bridge \
     && python -c "import sys; sys.path.insert(0,'/build'); from privacy_build import seal_bridge_dependencies; seal_bridge_dependencies('/opt/hermes')" \
     && node --check bridge.js \
     && node --input-type=module -e "import {makeWASocket} from '@whiskeysockets/baileys'; if(typeof makeWASocket !== 'function') process.exit(1)" \
-    && /opt/venv/bin/python -c "from hermes_state_common import SCHEMA_VERSION; assert SCHEMA_VERSION == 32; import openai,cryptography" \
+    && /opt/venv/bin/python -c "from hermes_state_common import SCHEMA_VERSION; assert SCHEMA_VERSION == 32; import openai,cryptography,anthropic" \
     && rm -rf /root/.npm /root/.cache
 WORKDIR /opt/poc
 COPY poclib/ ./poclib/
@@ -40,11 +40,11 @@ EXPOSE 8787
 VOLUME ["/data"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
     CMD ["/opt/venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8787/live',timeout=3).read()"]
-LABEL io.hass.version="0.1.1" \
+LABEL io.hass.version="0.1.2" \
       io.hass.type="app" \
       io.hass.arch="amd64" \
       org.opencontainers.image.title="Hermes Lite PoC" \
-      org.opencontainers.image.version="0.1.1" \
+      org.opencontainers.image.version="0.1.2" \
       org.opencontainers.image.revision="b200f5bc60e31588ba2cb60e288029c4a54ba5fa" \
       org.opencontainers.image.description="Headless Hermes0.22.7/schema32; fixture default; manual live cutover"
 ENTRYPOINT ["/opt/venv/bin/python", "-m", "poclib.bootstrap"]

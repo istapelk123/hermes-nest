@@ -132,6 +132,9 @@ def child_environment(home):
     if not re.fullmatch(r'[A-Za-z_]+(?:/[A-Za-z0-9_+\-]+)*',zone):raise PolicyError('invalid timezone')
     env['TZ']=zone
     env['HERMES_POC_PRIVATE_LOGS']='1'
+    # Pinned image already packages dependencies; PM-generated symlinks in the
+    # protected state tree otherwise make the next boot fail its link gate.
+    env['HERMES_DISABLE_LAZY_INSTALLS']='1'
     if os.name == 'nt':
         # OS directory is needed to load native Python DLLs, not user config.
         system = os.environ.get('SystemRoot', r'C:\Windows')
